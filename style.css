@@ -64,6 +64,13 @@ body {
 .content {
     clear: both;
 }
+.feature {
+    width: 25%;
+    height: 200px; 
+    padding: 10px;
+    text-align: center;
+    line-height: 75px; 
+}
 .searchbox {
     padding: 20px 50px; 
 }
