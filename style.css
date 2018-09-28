@@ -72,6 +72,8 @@ body {
     padding: 20px; 
     text-align: center;
     line-height: 75px; 
+    border-left: solid 5px #fff;
+    border-right: solid 5px #fff; 
 }
 .searchbox {
     padding: 20px 50px; 
