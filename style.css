@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    /* border: solid 1px #ddd; */
+}
+
+body {
+    font-family: Raleway; 
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
+
+.container {
+    width: 100%;
+    border: solid 1px #ccc;
+}
+.header {
+    width: 100%;
+    border: solid 1px #ccc; 
+    background-color: #cc9595;
+    clear: both; 
+}
+.header h1 {
+    float: left;
+    display: inline-block; 
+    padding: 15px 50px;
+    margin: 0px; 
+    font-size: 30px; 
+}
+.navbar {
+    float: right; 
+    padding: 0;
+    margin: 0;
+}
+#mainnav {
+    padding: 0 30px 0 0; 
+    margin: 0; 
+}
+.navitem {
+    padding: 15px 20px;
+    margin: 10px 20px; 
+    display: inline-block; 
+}
+
+.hero {
+    clear:both;
+    height: 360px;
+    background-color: #e5c9c9; 
+}
+.herotext {
+    float: left; 
+    width: 50%;
+    padding: 140px 50px
+}
+.mapframe {
+    float: left; 
+    width: 50%;
+}
+#mapbox {
+    margin: 30px auto; 
+    padding: 10px; 
+    height: 300px;
+}
+.content {
+    clear: both;
+}
+.searchbox {
+    padding: 20px 50px; 
+}
+.searchcontent {
+    background-color: #eee; 
+    padding: 20px; 
+    margin: 0 auto 40px; 
+    text-align: center; 
+    border-radius: 15px
+}
+.searchprompt {
+    font-weight: 700; 
+    font-size: 30px; 
+}
+.searchfield {
+    font-style: italic; 
+    font-size: 30px;
+    font-weight: 700; 
+    display: inline; 
+    border-top: none; 
+    border-left: none; 
+    border-right: none; 
+    border-bottom: 5px #000; 
+    box-sizing: content-box; 
+    background-color: #eee; 
+}
+.footer {
+    padding: 50px; 
+    background-color: #555;
+    color: #fff; 
+    text-align: center; 
+    font-size: 90%;
+}
+.footer a, a:visited, a:link, a:active {
+    color: #ddd;
+}
