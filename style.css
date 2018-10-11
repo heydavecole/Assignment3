@@ -27,6 +27,15 @@ body {
     margin: 0px; 
     font-size: 30px; 
 }
+.usc_logo{
+    float: left;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block; 
+    width:180px
+
+}
 .navbar {
     float: right; 
     padding: 0;
