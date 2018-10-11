@@ -50,11 +50,16 @@ body {
     margin: 10px 20px; 
     display: inline-block; 
 }
-
 .hero {
     clear:both;
     height: 360px;
     background-color: #990000; 
+}
+hr{
+    height: 4px;
+    color: #FFCC00;
+    background-color: #FFCC00;
+    border: none;
 }
 .herotext {
     float: left; 
