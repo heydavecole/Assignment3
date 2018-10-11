@@ -45,12 +45,15 @@ body {
 .hero {
     clear:both;
     height: 360px;
-    background-color: #e5c9c9; 
+    background-color: #990000; 
 }
 .herotext {
     float: left; 
     width: 50%;
     padding: 140px 50px
+}
+.herotext h2{
+    color: white;
 }
 .mapframe {
     float: left; 
