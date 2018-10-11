@@ -27,6 +27,15 @@ body {
     margin: 0px; 
     font-size: 30px; 
 }
+.usc_logo{
+    float: left;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block; 
+    width:180px
+
+}
 .navbar {
     float: right; 
     padding: 0;
@@ -45,12 +54,15 @@ body {
 .hero {
     clear:both;
     height: 360px;
-    background-color: #e5c9c9; 
+    background-color: #990000; 
 }
 .herotext {
     float: left; 
     width: 50%;
     padding: 140px 50px
+}
+.herotext h2{
+    color: white;
 }
 .mapframe {
     float: left; 
