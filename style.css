@@ -96,7 +96,11 @@ hr{
     width: 100%;
 }
 .searchbox {
+    background-color: #990000; 
     padding: 20px 50px; 
+}
+.searchbox h3 {
+    color: white;
 }
 .searchcontent {
     background-color: #eee; 
