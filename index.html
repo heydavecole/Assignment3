@@ -96,10 +96,12 @@
             </div>
             <div class="content">
                 <div style="width: 100%; padding: 10px 50px; margin: 0 auto; align-content: center;" id="topfeatures">
+                    <a href="gem.html">
                     <div class="feature" id="feature1">
                         <span class="featuretitle"></span>
                         <img class="featureimage">
                     </div>
+                    </a>
                     <div class="feature" id="feature2">
                         <span class="featuretitle"></span>
                         <img class="featureimage">
@@ -147,7 +149,7 @@
         // Add Gems to map
         for ( var i = 0; i < myGems.length; i++ ) {
             var marker = L.marker([myGems[i].lat, myGems[i].long]).addTo(mymap);
-            marker.bindPopup("<b>" + myGems[i].name + "</b><br>" + myGems[i].type );
+            marker.bindPopup("<a href='gem.html'><b>" + myGems[i].name + "</b></a><br>" + myGems[i].type );
         }
         
     </script>
