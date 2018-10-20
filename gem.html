@@ -1,0 +1,105 @@
+<html>
+    <head>
+        
+        <!-- Hidden Gems website concept -->
+        <!-- IDSN530 Fall 2018 -->
+        <!-- Dave Cole, Adamu Cho, Angela Newman, Joseph Prouse -->
+        
+        <title>HiddenGems</title>
+        
+        <!-- Styles -->
+        <link type="text/css" rel="stylesheet" href="style.css" />
+        
+        <!-- Fonts --> 
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700,900" rel="stylesheet">
+        
+        <!-- Scripts -->
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <!-- Leaflet Maps (Google Maps API is disabled on student Google account) -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+        <script type="text/javascript">
+        let myGems = [
+                {   
+                    id: 1, 
+                    name: "Sweet Selfie Spot", 
+                    type:"Instagrammable", 
+                    lat:34.0225, 
+                    long: -118.283
+                }
+            ];
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                        <a href="index.html"><img class="logo" src="imgs/hiddengemslogo.png"></a>
+                </div>
+                <div class="logo">
+                    <a href="index.html"><h1>Hidden Gems</h1></a>
+                </div>
+               
+                <div class="navbar">
+                    <ul id="mainnav">
+                        <li class="navitem">
+                            Recreational
+                        </li>
+                        <li class="navitem">
+                            Study
+                        </li>
+                        <li class="navitem">
+                            Student Life
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div style="float:right;"><br/><br/>Instagrammable</div>
+                <h2>Sweet Selifie Spot</h2>
+                <div id="mapbox"></div>
+                
+                <div class="searchbox">
+                    <span style="color: #FFF;">Make yourself right at home in this special spot on campus to take a great instagram selfie!</span>
+                </div>
+                
+                <img src="imgs/gem-1.jpg" style="float:left; padding: 20px;">
+                <h4>Gem Stats</h4>
+                <p>Discovered: October 1, 2018</p>
+                <p>Found By: FavUser123</p>
+                <p>Popularity: #1 Selfie Spot within 2 miles!</p>
+            </div>
+            <div class="content">
+                <h3>Find Other Selfie Spots</h3>
+                <div class="feature" id="">
+                    <span class="featuretitle">Dinosaur Selfies</span>
+                    <img class="featureimage" src="imgs/gem-4.jpg">
+                </div>
+            </div>
+            <div style="clear:both;">&nbsp;</div>
+            <div class="footer" style="clear:both;">
+                <p><b><a href="index.html">Hidden Gems</a></b></p>
+                <p>&copy Copyright 2018 - Dave Cole, Adamu Cho, Angela Newman, Joseph Prouse</p>
+                <p>IDSN530 - Fall 2018</p>
+                Maps courtesy of the <a href="http://www.openstreetmaps.org">Open Street Maps</a> project. 
+            </div>
+        </div>
+    </body>
+    <script>
+        var mymap = L.map('mapbox').setView([34.022, -118.285], 17);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mymap);  
+        
+        // Add Gems to map
+        for ( var i = 0; i < myGems.length; i++ ) {
+            var marker = L.marker([myGems[i].lat, myGems[i].long]).addTo(mymap);
+            marker.bindPopup("<b>" + myGems[i].name + "</b><br>" + myGems[i].type ).openPopup();
+        }
+        
+    </script>
+</html>
+          

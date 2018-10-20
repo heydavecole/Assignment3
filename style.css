@@ -27,13 +27,16 @@ body {
     margin: 0px; 
     font-size: 30px; 
 }
-.usc_logo{
+.header h1 a, a:visited, a:link, a:active, a:hover {
+    color: #000 !important; 
+}
+.logo{
     float: left;
-    padding-left: 10px;
+    padding-left: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
     display: inline-block; 
-    width:180px
+    width:95px
 
 }
 .navbar {
@@ -80,6 +83,8 @@ hr{
 }
 .content {
     clear: both;
+    width: 100%; 
+    padding: 50px;
 }
 .feature {
     background-color: #eee; 
