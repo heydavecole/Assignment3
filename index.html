@@ -28,6 +28,10 @@
                     id: 1, 
                     name: "Sweet Selfie Spot", 
                     type:"Instagrammable", 
+                    discoverer: "@FavUser123",
+                    discoveredon: "October 1, 2018",
+                    popularity: "#1 Selfie Spot within 2 miles",
+                    description: "This selfie spot takes find your lighting to a whole new level! This outside, sunny area never fails to give you perfect selfie lighting during the day, and surprises you with its multicolored lamp posts light show to keep you glowing at night. Who doesn’t like a selfie spot with options? No matter the time, you are sure to get a fire picture. Swing by anytime!",
                     lat:34.0225, 
                     long: -118.283
                 },
@@ -35,6 +39,10 @@
                     id: 2, 
                     name: "Best Campus Coffee Cart", 
                     type:"Food", 
+                    discoverer: "@CoffeeFeign",
+                    discoveredon: "October 23, 2018",
+                    popularity: "#1 Coffee Cart on campus",
+                    description: "With all the options on campus, you are sure to never be disappointed with your choice of a sizzling hot or refreshingly brisk coffee specialty drink at Corner Coffee. The experience is beyond the beverage. The customer service is sure to bring you back time after time with their warm welcome and uptempo music to bypass the time spent in line. Trust, it is worth the wait!",
                     lat: 34.021, 
                     long: -118.286
                 },
@@ -42,6 +50,10 @@
                     id: 3,
                     name: "Best Tailgating Lot",
                     type:"Locale",
+                    discoverer: "@SportsFan44",
+                    discoveredon: "September 4, 2018",
+                    popularity: "#1 Tailgating Spot within 1 mile",
+                    description: "Tailgating is an experience of comradery as well as community, and should be treated as such. If that is your truth then you can attest to, what is tailgating without the perfect spot? Lot H is the most central and historically used spot for USC games. Not only is this the biggest lot used for tailgating USC’s most prominent sporting events, but it has a spirit like no other! It has seen the best of times and the worst, but no other lot can compare to the eminent vibe of the Trojan spirit.",
                     lat: 34.015,
                     long: -118.285
                 },
@@ -49,6 +61,10 @@
                     id: 4,
                     name: "Dinosaur Selfies",
                     type:"Instagrammable",
+                    discoverer: "@iAdventure",
+                    discoveredon: "August 31, 2018",
+                    popularity: "#2 Selfie Spot within 2 miles",
+                    description: "Have you ever seen any of the Jurassic Park films, or even watched their movie trailers? At least the commercial that rolls 100 times a day when premiering?  If you answered yes to any of these questions then you’re in luck, because this selfie spot is perfect for you! From the damp mulch on the ground to the pterodactyl sounds echoing from the above you, you are sure to be inspired to capture the most ferociously awesome flick. Don’t forget to smile when taking your selfie with the 4D T-Rex!",
                     lat: 34.017,
                     long: -118.289
                 }
@@ -56,6 +72,7 @@
             
             $(document).ready(function(){
                 for ( var j = 0; j < myGems.length; j++ ) {
+                    $("#featurelink" + (j+1) ).attr("href", "gem.html?id=" + myGems[j].id );
                     $("#feature" + (j+1) ).children(".featuretitle").text(myGems[j].name);
                     $("#feature" + (j+1) ).children(".featureimage").attr("src", "imgs/gem-"+ (j+1) +".jpg"); 
                 }
@@ -78,7 +95,7 @@
                             Recreational
                         </li>
                         <li class="navitem">
-                            Study
+                            Good Eats
                         </li>
                         <li class="navitem">
                             Student Life
@@ -96,24 +113,26 @@
             </div>
             <div class="content">
                 <div style="width: 100%; padding: 10px 50px; margin: 0 auto; align-content: center;" id="topfeatures">
-                    <a href="gem.html">
+                    <a href="" id="featurelink1">
                     <div class="feature" id="feature1">
                         <span class="featuretitle"></span>
                         <img class="featureimage">
-                    </div>
-                    </a>
+                    </div></a>
+                    <a href="" id="featurelink2">
                     <div class="feature" id="feature2">
                         <span class="featuretitle"></span>
                         <img class="featureimage">
-                    </div>
+                    </div></a>
+                    <a href="" id="featurelink3">
                     <div class="feature" id="feature3">
                         <span class="featuretitle"></span>
                         <img class="featureimage">
-                    </div>
+                        </div></a>
+                    <a href="" id="featurelink4">
                     <div class="feature" id="feature4">
                         <span class="featuretitle"></span>
                         <img class="featureimage">
-                    </div>
+                     </div></a>
                 </div>
             </div>
             <div class="content">

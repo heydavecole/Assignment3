@@ -93,7 +93,7 @@ hr{
     /* height: 200px; */
     padding: 20px; 
     text-align: center;
-    line-height: 75px; 
+    /* line-height: 75px; This wasn't working on smaller screens */
     border-left: solid 5px #fff;
     border-right: solid 5px #fff; 
 }

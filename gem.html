@@ -21,15 +21,107 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
         <script type="text/javascript">
-        let myGems = [
+            // Helpful 
+            // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+            let myGems = [
                 {   
                     id: 1, 
                     name: "Sweet Selfie Spot", 
                     type:"Instagrammable", 
+                    discoverer: "@FavUser123",
+                    discoveredon: "October 1, 2018",
+                    popularity: "#1 Selfie Spot within 2 miles",
+                    description: "This selfie spot takes find your lighting to a whole new level! This outside, sunny area never fails to give you perfect selfie lighting during the day, and surprises you with its multicolored lamp posts light show to keep you glowing at night. Who doesn’t like a selfie spot with options? No matter the time, you are sure to get a fire picture. Swing by anytime!",
                     lat:34.0225, 
                     long: -118.283
+                },
+                {
+                    id: 2, 
+                    name: "Best Campus Coffee Cart", 
+                    type:"Good Eats", 
+                    discoverer: "@CoffeeFeign",
+                    discoveredon: "October 23, 2018",
+                    popularity: "#1 Coffee Cart on campus",
+                    description: "With all the options on campus, you are sure to never be disappointed with your choice of a sizzling hot or refreshingly brisk coffee specialty drink at Corner Coffee. The experience is beyond the beverage. The customer service is sure to bring you back time after time with their warm welcome and uptempo music to bypass the time spent in line. Trust, it is worth the wait!",
+                    lat: 34.021, 
+                    long: -118.286
+                },
+                {
+                    id: 3,
+                    name: "Best Tailgating Lot",
+                    type:"Student Life",
+                    discoverer: "@SportsFan44",
+                    discoveredon: "September 4, 2018",
+                    popularity: "#1 Tailgating Spot within 1 mile",
+                    description: "Tailgating is an experience of comradery as well as community, and should be treated as such. If that is your truth then you can attest to, what is tailgating without the perfect spot? Lot H is the most central and historically used spot for USC games. Not only is this the biggest lot used for tailgating USC’s most prominent sporting events, but it has a spirit like no other! It has seen the best of times and the worst, but no other lot can compare to the eminent vibe of the Trojan spirit.",
+                    lat: 34.015,
+                    long: -118.285
+                },
+                {
+                    id: 4,
+                    name: "Dinosaur Selfies",
+                    type:"Instagrammable",
+                    discoverer: "@iAdventure",
+                    discoveredon: "August 31, 2018",
+                    popularity: "#2 Selfie Spot within 2 miles",
+                    description: "Have you ever seen any of the Jurassic Park films, or even watched their movie trailers? At least the commercial that rolls 100 times a day when premiering?  If you answered yes to any of these questions then you’re in luck, because this selfie spot is perfect for you! From the damp mulch on the ground to the pterodactyl sounds echoing from the above you, you are sure to be inspired to capture the most ferociously awesome flick. Don’t forget to smile when taking your selfie with the 4D T-Rex!",
+                    lat: 34.017,
+                    long: -118.289
                 }
             ];
+            var showGem = getParameterByName('id'); 
+            var gemType = "";
+            var gemMap = { 
+                title: "",
+                type: "",
+                lat: 0, 
+                long: 0
+            };
+            $(document).ready(function(){
+                $(myGems).each(function(){
+                   if ( this.id == showGem ) {
+                       $("#gemtitle").html( this.name ); 
+                       $("#gemimg").attr("src", "imgs/gem-" + showGem + ".jpg");
+                       $(".gemtype").html( this.type );
+                       gemType = this.type;
+                       $("#ddate").html( this.discoveredon );
+                       $("#duser").html( this.discoverer );
+                       $("#pop").html( this.popularity );
+                       $("#desc").html( this.description );
+                       gemMap.title = this.name;
+                       gemMap.type = this.type;
+                       gemMap.lat = this.lat; 
+                       gemMap.long = this.long;
+                       console.log(gemMap);
+                       var marker = L.marker([gemMap.lat, gemMap.long]).addTo(mymap);
+                        marker.bindPopup("<b>" + gemMap.title + "</b><br>" + gemMap.type ).openPopup();
+                   } 
+                });
+                let hastypes = 0;
+                $(myGems).each(function(){
+                   if ( ( this.type == gemType ) && ( this.id != showGem ) ) {
+                       // Show in 'you might also like'
+                       /* 
+                       <div class="feature" id="">
+                            <span class="featuretitle">Dinosaur Selfies</span>
+                            <img class="featureimage" src="imgs/gem-4.jpg">
+                        </div>
+                        */
+                       $("#alsolike").append("<a href='gem.html?id=" + this.id + "'><div class='feature' id='" + this.id + "'><span class='featuretitle'>" + this.name + "</span><img class='featureimage' src='imgs/gem-" + this.id + ".jpg'></div></a>");
+                       hastypes++;
+                   }
+                });
+                if ( hastypes == 0 ) { $("#alsolike").append("Sorry, nothing else is like this!"); }
+            });
         </script>
     </head>
     <body>
@@ -48,7 +140,7 @@
                             Recreational
                         </li>
                         <li class="navitem">
-                            Study
+                            Good Eats
                         </li>
                         <li class="navitem">
                             Student Life
@@ -56,27 +148,24 @@
                     </ul>
                 </div>
             </div>
-            <div class="content">
-                <div style="float:right;"><br/><br/>Instagrammable</div>
-                <h2>Sweet Selifie Spot</h2>
+            <div class="content" style="padding-top: 5px;">
+                <div class="gemtype" style="float: right; background-color: aqua; margin-top: 30px; padding: 5px; border-radius: 3px; ">Instagrammable</div>
+                <h2 id="gemtitle"></h2>
                 <div id="mapbox"></div>
                 
-                <div class="searchbox">
+                <!-- <div class="searchbox">
                     <span style="color: #FFF;">Make yourself right at home in this special spot on campus to take a great instagram selfie!</span>
-                </div>
+                </div> -->
                 
-                <img src="imgs/gem-1.jpg" style="float:left; padding: 20px;">
+                <img id="gemimg" src="" style="float:left; padding: 20px 20px 20px 0;">
                 <h4>Gem Stats</h4>
-                <p>Discovered: October 1, 2018</p>
-                <p>Found By: FavUser123</p>
-                <p>Popularity: #1 Selfie Spot within 2 miles!</p>
-            </div>
-            <div class="content">
-                <h3>Find Other Selfie Spots</h3>
-                <div class="feature" id="">
-                    <span class="featuretitle">Dinosaur Selfies</span>
-                    <img class="featureimage" src="imgs/gem-4.jpg">
-                </div>
+                <p>Discovered: <span id="ddate"></span></p>
+                <p>Found By: <span id="duser"></span></p>
+                <p>Popularity: <span id="pop"></span></p>
+                <p id="desc"></p>
+                <div style="clear:both;"></div>
+                <h3>Other <span class="gemtype"></span> spots...</h3>
+                <div id="alsolike"></div>
             </div>
             <div style="clear:both;">&nbsp;</div>
             <div class="footer" style="clear:both;">
@@ -95,10 +184,7 @@
         }).addTo(mymap);  
         
         // Add Gems to map
-        for ( var i = 0; i < myGems.length; i++ ) {
-            var marker = L.marker([myGems[i].lat, myGems[i].long]).addTo(mymap);
-            marker.bindPopup("<b>" + myGems[i].name + "</b><br>" + myGems[i].type ).openPopup();
-        }
+        
         
     </script>
 </html>
